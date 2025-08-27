@@ -258,6 +258,106 @@
             color: #6b7280;
         }
         
+        /* Карусель популярных автомобилей */
+        .popular-cars {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .car-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .car-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .car-details {
+            padding: 20px;
+        }
+        
+        .car-title {
+            font-size: 1.3rem;
+            color: #1f2937;
+            margin-bottom: 10px;
+        }
+        
+        .car-price {
+            font-size: 1.5rem;
+            color: #2563eb;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .car-price span {
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+        
+        .car-features {
+            margin-bottom: 15px;
+        }
+        
+        .car-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+        
+        .car-feature::before {
+            content: "✓";
+            color: #10b981;
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        
+        .view-more-btn {
+            display: block;
+            text-align: center;
+            margin-top: 40px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .view-more-btn:hover {
+            background-color: #1d4ed8;
+        }
+        
+        /* Для владельцев */
+        .for-owners {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
         /* Призыв к действию */
         .cta {
             background: linear-gradient(to right, #2563eb, #3b82f6);
@@ -369,6 +469,10 @@
             .step {
                 margin-bottom: 40px;
                 width: 100%;
+            }
+            
+            .cars-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -487,8 +591,70 @@
         </div>
     </section>
 
+    <!-- Популярные автомобили -->
+    <section class="popular-cars">
+        <div class="container">
+            <div class="section-title">
+                <h2>Популярные автомобили</h2>
+                <p>Самые востребованные модели среди наших клиентов</p>
+            </div>
+            
+            <div class="cars-grid">
+                <div class="car-card">
+                    <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Kia Rio" class="car-image">
+                    <div class="car-details">
+                        <h3 class="car-title">Kia Rio (автомат)</h3>
+                        <div class="car-price">2 500₽ <span>/ сутки</span></div>
+                        
+                        <div class="car-features">
+                            <div class="car-feature">2022 год</div>
+                            <div class="car-feature">Автоматическая коробка</div>
+                            <div class="car-feature">Кондиционер</div>
+                            <div class="car-feature">1.6 л • Бензин</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Hyundai Creta" class="car-image">
+                    <div class="car-details">
+                        <h3 class="car-title">Hyundai Creta</h3>
+                        <div class="car-price">3 800₽ <span>/ сутки</span></div>
+                        
+                        <div class="car-features">
+                            <div class="car-feature">2021 год</div>
+                            <div class="car-feature">Автоматическая коробка</div>
+                            <div class="car-feature">Климат-контроль</div>
+                            <div class="car-feature">2.0 л • Бензин</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="car-card">
+                    <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                         alt="Skoda Octavia" class="car-image">
+                    <div class="car-details">
+                        <h3 class="car-title">Skoda Octavia</h3>
+                        <div class="car-price">3 200₽ <span>/ сутки</span></div>
+                        
+                        <div class="car-features">
+                            <div class="car-feature">2020 год</div>
+                            <div class="car-feature">Автоматическая коробка</div>
+                            <div class="car-feature">Круиз-контроль</div>
+                            <div class="car-feature">1.4 л • Бензин</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="catalog.html" class="view-more-btn">Смотреть все автомобили</a>
+        </div>
+    </section>
+
     <!-- Для владельцев -->
-    <section class="features" id="for-owners">
+    <section class="for-owners" id="for-owners">
         <div class="container">
             <div class="section-title">
                 <h2>Для владельцев автомобилей</h2>
@@ -528,7 +694,7 @@
         <div class="container">
             <h2>Готовы начать экономить на аренде?</h2>
             <p>Найдите идеальный автомобиль для вашей следующей поездки уже сегодня</p>
-            <button class="btn" onclick="document.getElementById('searchForm').scrollIntoView({behavior: 'smooth'})">Найти автомобиль</button>
+            <button class="btn" onclick="location.href='catalog.html'">Найти автомобиль</button>
         </div>
     </section>
 
@@ -566,7 +732,7 @@
     </footer>
 
     <script>
-        // Обработка формы поиска
+        // Обработка формы поиска - переход на catalog.html
         document.getElementById('searchForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -579,9 +745,8 @@
                 return;
             }
             
-            // Здесь будет переход на страницу с результатами поиска
-            // Для MVP просто покажем сообщение
-            alert('Поиск выполнен! В реальной версии здесь будут результаты поиска.');
+            // Переходим на страницу каталога
+            window.location.href = 'catalog.html';
         });
         
         // Установка минимальной даты как сегодняшний день
