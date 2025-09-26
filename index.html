@@ -4,475 +4,499 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DriveBit - Аренда автомобилей от собственников</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Базовые стили */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
-        
         body {
-            color: #333;
+            color: #1a1a1a;
             line-height: 1.6;
-            background-color: #f8f9fa;
+            background-color: #ffffff;
+            font-size: 16px;
+            font-weight: 400;
         }
-        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
         /* Шапка */
         header {
-            background-color: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            padding: 15px 0;
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 12px 0;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
         }
-        
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
         .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .logo img {
+            height: 32px;
+            width: auto;
+        }
+        .logo span {
             font-size: 24px;
             font-weight: 700;
             color: #2563eb;
         }
-        
-        .logo span {
-            color: #f59e0b;
-        }
-        
         nav ul {
             display: flex;
             list-style: none;
+            gap: 25px;
         }
-        
-        nav ul li {
-            margin-left: 25px;
-        }
-        
         nav ul li a {
             text-decoration: none;
             color: #4b5563;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 14px;
         }
-        
         nav ul li a:hover {
             color: #2563eb;
+            background-color: #f8fafc;
         }
-        
-        /* Герой секция */
-        .hero {
-            background: linear-gradient(to right, #2563eb, #3b82f6);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-        }
-        
-        .search-form {
-            background: white;
-            border-radius: 10px;
-            padding: 25px;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        .auth-buttons {
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
+            align-items: center;
         }
-        
-        .form-group {
-            flex: 1;
-            min-width: 200px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #4b5563;
+        .auth-buttons a {
+            padding: 8px 18px;
+            border-radius: 8px;
+            text-decoration: none;
             font-weight: 500;
-            text-align: left;
+            transition: all 0.3s ease;
+            font-size: 13px;
         }
-        
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 16px;
+        .auth-buttons .login {
+            color: #2563eb;
+            border: 1.5px solid #2563eb;
         }
-        
-        .btn {
+        .auth-buttons .login:hover {
+            background-color: #2563eb;
+            color: white;
+        }
+        .auth-buttons .register {
             background-color: #f59e0b;
             color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 6px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            align-self: flex-end;
+            border: 1.5px solid #f59e0b;
         }
-        
-        .btn:hover {
+        .auth-buttons .register:hover {
             background-color: #e6900b;
         }
-        
+        .user-name {
+            color: #374151;
+            margin-right: 15px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        /* Герой секция */
+        .hero {
+            background-image: url('images/backgrounds/картинка.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 75vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 15px 20px;
+            margin-top: 15px;
+        }
+        /* Форма поиска */
+        .search-form {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 0;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            height: 50px;
+        }
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 10px 14px;
+            min-width: 0;
+        }
+        .form-group label {
+            margin-bottom: 2px;
+            color: #374151;
+            font-size: 11px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+        .form-group input, .form-group select {
+            padding: 0;
+            border: none;
+            outline: none;
+            font-size: 15px;
+            background: transparent;
+            color: #1a1a1a;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        .search-btn {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 4px;
+        }
+        .search-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+        }
         /* Преимущества */
         .features {
-            padding: 80px 0;
-            background-color: #fff;
+            padding: 60px 0;
+            background: linear-gradient(to bottom, #ffffff, #f8fafc);
         }
-        
         .section-title {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 48px;
         }
-        
         .section-title h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: #1f2937;
-            margin-bottom: 15px;
+            margin-bottom: 16px;
+            font-weight: 700;
         }
-        
         .section-title p {
             color: #6b7280;
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.6;
         }
-        
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 0 auto;
+            max-width: 1100px;
+            padding: 0 20px;
         }
-        
         .feature-card {
+            background: white;
+            padding: 28px 20px;
+            border-radius: 20px;
             text-align: center;
-            padding: 30px 20px;
-            border-radius: 10px;
-            background-color: #f9fafb;
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+            font-size: 14px;
         }
-        
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
         }
-        
         .feature-icon {
             width: 60px;
             height: 60px;
-            background-color: #dbeafe;
-            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            color: #2563eb;
+            margin: 0 auto 16px;
+            color: white;
             font-size: 24px;
+            font-weight: bold;
         }
-        
         .feature-card h3 {
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             color: #1f2937;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
-        
         .feature-card p {
             color: #6b7280;
+            line-height: 1.5;
         }
-        
-        /* Как это работает */
-        .how-it-works {
-            padding: 80px 0;
-            background-color: #f8f9fa;
-        }
-        
-        .steps {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-top: 50px;
-        }
-        
-        .step {
-            flex: 1;
-            min-width: 250px;
-            text-align: center;
-            padding: 0 20px;
-            position: relative;
-        }
-        
-        .step:not(:last-child):after {
-            content: "";
-            position: absolute;
-            top: 40px;
-            right: 0;
-            width: 50%;
-            height: 2px;
-            background-color: #d1d5db;
-        }
-        
-        .step-number {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background-color: #2563eb;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            font-weight: 700;
-            margin: 0 auto 20px;
-        }
-        
-        .step h3 {
-            margin-bottom: 15px;
-            color: #1f2937;
-        }
-        
-        .step p {
-            color: #6b7280;
-        }
-        
-        /* Карусель популярных автомобилей */
+        /* Популярные автомобили */
         .popular-cars {
-            padding: 80px 0;
-            background-color: #fff;
+            padding: 100px 0;
+            background: linear-gradient(to bottom, #f8fafc, #ffffff);
         }
-        
         .cars-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-top: 48px;
         }
-        
         .car-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
         }
-        
         .car-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
         }
-        
         .car-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
         }
-        
         .car-details {
-            padding: 20px;
+            padding: 28px;
         }
-        
         .car-title {
             font-size: 1.3rem;
             color: #1f2937;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
-        
+        .car-location {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
         .car-price {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: #2563eb;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
-        
         .car-price span {
             font-size: 1rem;
             color: #6b7280;
             font-weight: 400;
         }
-        
         .car-features {
-            margin-bottom: 15px;
+            margin-bottom: 24px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
         }
-        
         .car-feature {
             display: flex;
             align-items: center;
-            margin-bottom: 5px;
             color: #6b7280;
             font-size: 14px;
+            gap: 8px;
         }
-        
         .car-feature::before {
             content: "✓";
             color: #10b981;
-            margin-right: 8px;
             font-weight: bold;
+            font-size: 16px;
         }
-        
+        .book-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .book-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
         .view-more-btn {
             display: block;
+            margin: 48px auto 0;
             text-align: center;
-            margin-top: 40px;
-            background-color: #2563eb;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 6px;
+            padding: 18px 36px;
+            border-radius: 12px;
             font-size: 1.1rem;
-            font-weight: 500;
-            cursor: pointer;
+            font-weight: 600;
             text-decoration: none;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            width: fit-content;
         }
-        
         .view-more-btn:hover {
-            background-color: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(37, 99, 235, 0.3);
         }
-        
         /* Для владельцев */
         .for-owners {
-            padding: 80px 0;
-            background-color: #f8f9fa;
+            padding: 100px 0;
+            background: white;
         }
-        
         /* Призыв к действию */
         .cta {
-            background: linear-gradient(to right, #2563eb, #3b82f6);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        
         .cta h2 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
+            font-size: 2.8rem;
+            margin-bottom: 24px;
+            font-weight: 700;
         }
-        
         .cta p {
-            max-width: 700px;
-            margin: 0 auto 30px;
-            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.25rem;
+            opacity: 0.95;
+            font-weight: 300;
         }
-        
         .cta .btn {
-            background-color: white;
+            background: white;
             color: #2563eb;
             font-size: 1.1rem;
-            padding: 15px 30px;
+            padding: 18px 36px;
+            font-weight: 600;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
-        
         .cta .btn:hover {
-            background-color: #f0f0f0;
+            background: #f8fafc;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.2);
         }
-        
         /* Футер */
         footer {
             background-color: #1f2937;
             color: #f8f9fa;
-            padding: 50px 0 20px;
+            padding: 80px 0 20px;
         }
-        
         .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
         }
-        
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
-            margin-bottom: 30px;
-        }
-        
         .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 24px;
             color: white;
+            font-weight: 600;
         }
-        
+        .footer-column p {
+            color: #d1d5db;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-size: 15px;
+        }
         .footer-column ul {
             list-style: none;
         }
-        
         .footer-column ul li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
-        
         .footer-column ul li a {
             color: #d1d5db;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
+            font-size: 15px;
         }
-        
         .footer-column ul li a:hover {
             color: white;
         }
-        
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 40px;
             border-top: 1px solid #374151;
             color: #9ca3af;
+            font-size: 14px;
         }
-        
+        /* Новая кнопка внизу */
+        .blog-cta {
+            text-align: center;
+            padding: 60px 20px;
+            background: #f8fafc;
+            margin-top: 0;
+        }
+        .blog-btn {
+            display: inline-block;
+            background: #f59e0b;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .blog-btn:hover {
+            background: #e6900b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(245, 158, 11, 0.2);
+        }
         /* Адаптивность */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
+                gap: 15px;
                 text-align: center;
             }
-            
             nav ul {
-                margin-top: 15px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .search-form {
                 flex-direction: column;
+                gap: 12px;
             }
-            
-            .form-group {
-                width: 100%;
-            }
-            
-            .step:not(:last-child):after {
-                display: none;
-            }
-            
-            .step {
-                margin-bottom: 40px;
-                width: 100%;
-            }
-            
-            .cars-grid {
-                grid-template-columns: 1fr;
+            .auth-buttons {
+                justify-content: center;
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -481,46 +505,48 @@
     <!-- Шапка -->
     <header>
         <div class="container header-content">
-            <div class="logo">Drive<span>Bit</span></div>
+            <a href="index.html" class="logo">
+                <img src="images/logos/logo.png" alt="DriveBit">
+                <span>DriveBit</span>
+            </a>
             <nav>
                 <ul>
                     <li><a href="#how-it-works">Как это работает</a></li>
                     <li><a href="#features">Преимущества</a></li>
                     <li><a href="#for-owners">Для владельцев</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
                 </ul>
             </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="login">Войти</a>
+                <a href="login.html" class="register">Регистрация</a>
+            </div>
         </div>
     </header>
 
     <!-- Герой секция -->
     <section class="hero">
-        <div class="container">
-            <h1>Аренда автомобилей от 2 500₽/сутки</h1>
-            <p>Бронируйте заранее — экономьте до 40%. Полная страховка и поддержка 24/7. Ваш автомобиль в надежных руках.</p>
-            
-            <form class="search-form" id="searchForm">
+        <div class="hero-content">
+            <form class="search-form" action="catalog.html" method="GET">
                 <div class="form-group">
                     <label for="city">Город</label>
-                    <select id="city" required>
+                    <select id="city" name="city" required>
                         <option value="">Выберите город</option>
-                        <option value="kaliningrad">Калининград</option>
-                        <option value="moscow">Москва</option>
-                        <option value="spb">Санкт-Петербург</option>
-                        <option value="sochi">Сочи</option>
+                        <option value="Москва">Москва</option>
+                        <option value="Санкт-Петербург">Санкт-Петербург</option>
+                        <option value="Калининград">Калининград</option>
+                        <option value="Сочи">Сочи</option>
                     </select>
                 </div>
-                
                 <div class="form-group">
                     <label for="start-date">Дата получения</label>
-                    <input type="date" id="start-date" required>
+                    <input type="date" id="start-date" name="start_date" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="end-date">Дата возврата</label>
-                    <input type="date" id="end-date" required>
+                    <input type="date" id="end-date" name="end_date" required>
                 </div>
-                
-                <button type="submit" class="btn">Найти доступные авто</button>
+                <button type="submit" class="search-btn">🔍</button>
             </form>
         </div>
     </section>
@@ -529,63 +555,29 @@
     <section class="features" id="features">
         <div class="container">
             <div class="section-title">
-                <h2>Почему выбирают DriveBit?</h2>
+                <h2>Арендуй машину у частного владельца на 40% дешевле чем в прокате</h2>
                 <p>Мы создали сервис, который решает главные проблемы аренды автомобилей</p>
             </div>
-            
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">₽</div>
                     <h3>Дешевле проката на 40%</h3>
                     <p>Работаем без посредников и лишних наценок. Аренда напрямую у владельцев.</p>
                 </div>
-                
                 <div class="feature-card">
                     <div class="feature-icon">🛡️</div>
                     <h3>Полная страховка</h3>
                     <p>Решаем проблемы за вас. Ваша ответственность — 0₽. Все риски на нас.</p>
                 </div>
-                
                 <div class="feature-card">
                     <div class="feature-icon">📞</div>
                     <h3>Поддержка 24/7</h3>
                     <p>Поможем в любой ситуации в дороге. На связи круглосуточно.</p>
                 </div>
-                
                 <div class="feature-card">
                     <div class="feature-icon">⏱️</div>
                     <h3>Честный залог</h3>
                     <p>Возвращаем сразу после сдачи авто. Никаких задержек и скрытых удержаний.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Как это работает -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <div class="section-title">
-                <h2>Как это работает?</h2>
-                <p>Всего 3 простых шага чтобы арендовать автомобиль</p>
-            </div>
-            
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Выберите даты и город</h3>
-                    <p>Укажите когда и где вам нужен автомобиль</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Забронируйте онлайн</h3>
-                    <p>Выберите подходящий автомобиль и забронируйте</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Поезжайте с уверенностью</h3>
-                    <p>Получите автомобиль и наслаждайтесь поездкой</p>
                 </div>
             </div>
         </div>
@@ -598,57 +590,53 @@
                 <h2>Популярные автомобили</h2>
                 <p>Самые востребованные модели среди наших клиентов</p>
             </div>
-            
             <div class="cars-grid">
                 <div class="car-card">
-                    <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                         alt="Kia Rio" class="car-image">
+                    <img src="images/cars/skoda-rapid.jpg" alt="Skoda Rapid" class="car-image">
                     <div class="car-details">
-                        <h3 class="car-title">Kia Rio (автомат)</h3>
-                        <div class="car-price">2 500₽ <span>/ сутки</span></div>
-                        
+                        <h3 class="car-title">Skoda Rapid</h3>
+                        <div class="car-location">📍 Калининград</div>
+                        <div class="car-price">2800₽ <span>/ сутки</span></div>
                         <div class="car-features">
-                            <div class="car-feature">2022 год</div>
-                            <div class="car-feature">Автоматическая коробка</div>
-                            <div class="car-feature">Кондиционер</div>
-                            <div class="car-feature">1.6 л • Бензин</div>
+                            <div class="car-feature">2019 год</div>
+                            <div class="car-feature">Механическая</div>
+                            <div class="car-feature">Бензин</div>
+                            <div class="car-feature">1.6 л</div>
                         </div>
+                        <a href="car-details.html" class="book-btn">Забронировать</a>
                     </div>
                 </div>
-
                 <div class="car-card">
-                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                         alt="Hyundai Creta" class="car-image">
+                    <img src="images/cars/bmw-x5.jpg" alt="BMW X5" class="car-image">
                     <div class="car-details">
-                        <h3 class="car-title">Hyundai Creta</h3>
-                        <div class="car-price">3 800₽ <span>/ сутки</span></div>
-                        
+                        <h3 class="car-title">BMW X5</h3>
+                        <div class="car-location">📍 Москва</div>
+                        <div class="car-price">8000₽ <span>/ сутки</span></div>
                         <div class="car-features">
                             <div class="car-feature">2021 год</div>
-                            <div class="car-feature">Автоматическая коробка</div>
-                            <div class="car-feature">Климат-контроль</div>
-                            <div class="car-feature">2.0 л • Бензин</div>
+                            <div class="car-feature">Автоматическая</div>
+                            <div class="car-feature">Бензин</div>
+                            <div class="car-feature">3.0 л</div>
                         </div>
+                        <a href="car-details.html" class="book-btn">Забронировать</a>
                     </div>
                 </div>
-
                 <div class="car-card">
-                    <img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-                         alt="Skoda Octavia" class="car-image">
+                    <img src="images/cars/toyota-prius.jpg" alt="Toyota Prius" class="car-image">
                     <div class="car-details">
-                        <h3 class="car-title">Skoda Octavia</h3>
-                        <div class="car-price">3 200₽ <span>/ сутки</span></div>
-                        
+                        <h3 class="car-title">Toyota Prius</h3>
+                        <div class="car-location">📍 Санкт-Петербург</div>
+                        <div class="car-price">3500₽ <span>/ сутки</span></div>
                         <div class="car-features">
                             <div class="car-feature">2020 год</div>
-                            <div class="car-feature">Автоматическая коробка</div>
-                            <div class="car-feature">Круиз-контроль</div>
-                            <div class="car-feature">1.4 л • Бензин</div>
+                            <div class="car-feature">Автоматическая</div>
+                            <div class="car-feature">Гибрид</div>
+                            <div class="car-feature">1.8 л</div>
                         </div>
+                        <a href="car-details.html" class="book-btn">Забронировать</a>
                     </div>
                 </div>
             </div>
-            
             <a href="catalog.html" class="view-more-btn">Смотреть все автомобили</a>
         </div>
     </section>
@@ -660,26 +648,22 @@
                 <h2>Для владельцев автомобилей</h2>
                 <p>Зарабатывайте на вашем автомобиле, когда он не используется</p>
             </div>
-            
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">💰</div>
                     <h3>Пассивный доход</h3>
                     <p>Зарабатывайте от 35 000₽ в месяц без усилий</p>
                 </div>
-                
                 <div class="feature-card">
                     <div class="feature-icon">🔒</div>
                     <h3>Полная безопасность</h3>
                     <p>Мы проверяем всех арендаторов и страхуем автомобиль</p>
                 </div>
-                
                 <div class="feature-card">
                     <div class="feature-icon">📱</div>
                     <h3>Простое управление</h3>
                     <p>Контролируйте бронирования и доходы через приложение</p>
                 </div>
-                
                 <div class="feature-card">
                     <div class="feature-icon">🔄</div>
                     <h3>Свобода выбора</h3>
@@ -694,7 +678,7 @@
         <div class="container">
             <h2>Готовы начать экономить на аренде?</h2>
             <p>Найдите идеальный автомобиль для вашей следующей поездки уже сегодня</p>
-            <button class="btn" onclick="location.href='catalog.html'">Найти автомобиль</button>
+            <a href="catalog.html" class="btn">Найти автомобиль</a>
         </div>
     </section>
 
@@ -706,57 +690,51 @@
                     <h3>DriveBit</h3>
                     <p>Сервис P2P аренды автомобилей. Дешевле, чем в прокате.</p>
                 </div>
-                
                 <div class="footer-column">
                     <h3>Навигация</h3>
                     <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
                         <li><a href="#how-it-works">Как это работает</a></li>
-                        <li><a href="#features">Преимущества</a></li>
                         <li><a href="#for-owners">Для владельцев</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-column">
-                    <h3>Контакты</h3>
+                    <h3><a href="contacts.html" style="color: white; text-decoration: none;">Контакты</a></h3>
                     <ul>
                         <li><a href="mailto:info@drivebit.ru">info@drivebit.ru</a></li>
                         <li><a href="tel:+78001234567">8 (800) 123-45-67</a></li>
+                        <li><a href="contacts.html#support">Техническая поддержка</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Правовая информация</h3>
+                    <ul>
+                        <li><a href="terms.html">Условия использования</a></li>
+                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                        <li><a href="cookies.html">Политика cookies</a></li>
                     </ul>
                 </div>
             </div>
-            
             <div class="copyright">
                 <p>&copy; 2025 DriveBit. Все права защищены.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Блок с кнопкой "Блог об автопутешествиях по России" -->
+    <div class="blog-cta">
+        <a href="blog.html" class="blog-btn">Блог об автопутешествиях по России</a>
+    </div>
+
     <script>
-        // Обработка формы поиска - переход на catalog.html
-        document.getElementById('searchForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const city = document.getElementById('city').value;
-            const startDate = document.getElementById('start-date').value;
-            const endDate = document.getElementById('end-date').value;
-            
-            if (!city || !startDate || !endDate) {
-                alert('Пожалуйста, заполните все поля');
-                return;
-            }
-            
-            // Переходим на страницу каталога
-            window.location.href = 'catalog.html';
-        });
-        
-        // Установка минимальной даты как сегодняшний день
+        // Установка минимальной даты
         const today = new Date().toISOString().split('T')[0];
-        document.getElementById('start-date').setAttribute('min', today);
-        document.getElementById('end-date').setAttribute('min', today);
+        document.getElementById('start-date')?.setAttribute('min', today);
+        document.getElementById('end-date')?.setAttribute('min', today);
         
-        // Обновление минимальной даты для возврата при выборе даты получения
-        document.getElementById('start-date').addEventListener('change', function() {
-            document.getElementById('end-date').setAttribute('min', this.value);
+        document.getElementById('start-date')?.addEventListener('change', function() {
+            document.getElementById('end-date')?.setAttribute('min', this.value);
         });
     </script>
 </body>

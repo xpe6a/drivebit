@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет — DriveBit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+        body {
+            color: #1a1a1a;
+            line-height: 1.6;
+            background-color: #f8fafc;
+            font-size: 16px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Шапка */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 16px 0;
+            margin-bottom: 40px;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+        nav ul li a:hover {
+            color: #2563eb;
+            background-color: #f8fafc;
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .user-name {
+            color: #374151;
+            margin-right: 15px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        /* Личный кабинет */
+        .dashboard {
+            display: flex;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        .sidebar {
+            width: 250px;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            height: fit-content;
+        }
+        .sidebar-menu {
+            list-style: none;
+        }
+        .sidebar-menu li {
+            margin-bottom: 12px;
+        }
+        .sidebar-menu li a {
+            display: block;
+            padding: 12px 16px;
+            color: #4b5563;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        .sidebar-menu li a:hover,
+        .sidebar-menu li a.active {
+            background-color: #2563eb;
+            color: white;
+        }
+        .content {
+            flex: 1;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .page-title {
+            font-size: 24px;
+            color: #1f2937;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        .section-title {
+            font-size: 20px;
+            color: #1f2937;
+            margin: 32px 0 20px;
+            font-weight: 600;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 14px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        th {
+            background-color: #f8fafc;
+            color: #374151;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        tr:hover {
+            background-color: #f8fafc;
+        }
+        .car-image {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .status-confirmed {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 20px;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">DriveBit</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <span class="user-name">Иван Иванов</span>
+                <a href="login.html" class="login">Выйти</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container dashboard">
+        <!-- Сайдбар -->
+        <div class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html" class="active">Главная</a></li>
+                <li><a href="bookings.html">Мои бронирования</a></li>
+                <li><a href="profile.html">Профиль</a></li>
+            </ul>
+        </div>
+
+        <!-- Контент -->
+        <div class="content">
+            <h1 class="page-title">Добро пожаловать, Иван!</h1>
+            <p>Ваш личный кабинет — центр управления вашими бронированиями и данными.</p>
+
+            <h2 class="section-title">Последние бронирования</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Автомобиль</th>
+                        <th>Даты</th>
+                        <th>Сумма</th>
+                        <th>Статус</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <img src="images/cars/skoda-rapid.jpg" alt="Skoda Rapid" class="car-image">
+                            Skoda Rapid
+                        </td>
+                        <td>10–15 сентября 2025</td>
+                        <td>14 000₽</td>
+                        <td><span class="status-badge status-confirmed">Подтверждено</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a href="bookings.html" class="back-link">← Все бронирования</a>
+        </div>
+    </div>
+</body>
+</html>

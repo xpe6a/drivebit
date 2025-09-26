@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог об автопутешествиях — DriveBit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8fafc;
+            font-size: 16px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Шапка */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+        nav ul li a:hover {
+            color: #2563eb;
+            background-color: #f8fafc;
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .auth-buttons a {
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        .auth-buttons .login {
+            color: #2563eb;
+            border: 1.5px solid #2563eb;
+        }
+        .auth-buttons .login:hover {
+            background-color: #2563eb;
+            color: white;
+        }
+        .auth-buttons .register {
+            background-color: #f59e0b;
+            color: white;
+            border: 1.5px solid #f59e0b;
+        }
+        .auth-buttons .register:hover {
+            background-color: #e6900b;
+        }
+        /* Заголовок блога */
+        .blog-header {
+            text-align: center;
+            padding: 80px 20px 20px;
+        }
+        .blog-header h1 {
+            font-size: 2.8rem;
+            color: #1f2937;
+            margin-bottom: 16px;
+        }
+        .blog-header p {
+            color: #6b7280;
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        /* Блок маршрутов */
+        .routes-section {
+            text-align: center;
+            padding: 20px 0 60px;
+        }
+        .routes-section h2 {
+            font-size: 1.8rem;
+            color: #1f2937;
+            margin-bottom: 24px;
+        }
+        .city-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .city-link {
+            font-size: 1.2rem;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border: 2px solid #2563eb;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        .city-link:hover {
+            background-color: #2563eb;
+            color: white;
+        }
+        /* Сетка статей */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin: 40px 0 80px;
+        }
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .blog-content {
+            padding: 24px;
+        }
+        .blog-date {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }
+        .blog-title {
+            font-size: 20px;
+            color: #1f2937;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .blog-excerpt {
+            color: #6b7280;
+            font-size: 15px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        .read-more-btn {
+            display: inline-block;
+            background: #f59e0b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .read-more-btn:hover {
+            background: #e6900b;
+        }
+        /* Подвал */
+        footer {
+            background-color: #1f2937;
+            color: #f8f9fa;
+            padding: 60px 0 20px;
+        }
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            color: white;
+            font-weight: 600;
+        }
+        .footer-column p {
+            color: #d1d5db;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-size: 15px;
+        }
+        .footer-column ul {
+            list-style: none;
+        }
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        .footer-column ul li a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 15px;
+        }
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/logos/logo.png" alt="DriveBit">
+                <span>DriveBit</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="login">Войти</a>
+                <a href="login.html" class="register">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Заголовок блога -->
+        <section class="blog-header">
+            <h1>Автопутешествия по России</h1>
+            <p>Путеводители, маршруты и советы от опытных путешественников</p>
+        </section>
+
+        <!-- Маршруты по городам -->
+        <section class="routes-section">
+            <h2>Маршруты</h2>
+            <div class="city-links">
+                <a href="blog-city.html?city=Дмитров" class="city-link">Дмитров</a>
+                <a href="blog-city.html?city=Владимир" class="city-link">Владимир</a>
+                <a href="blog-city.html?city=Ярославль" class="city-link">Ярославль</a>
+            </div>
+        </section>
+
+        <!-- Последние статьи -->
+        <div class="container">
+            <div class="blog-grid">
+                <!-- Статья 1 -->
+                <div class="blog-card">
+                    <img src="images/blog/dmitrov.jpg" alt="Дмитров" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">15 сентября 2025</div>
+                        <h2 class="blog-title">Дмитров: древний город у реки</h2>
+                        <p class="blog-excerpt">Что посмотреть за один день: кремль, музей пива, прогулка по Волге. Лучшие кафе и парковки.</p>
+                        <a href="#" class="read-more-btn">Читать далее</a>
+                    </div>
+                </div>
+
+                <!-- Статья 2 -->
+                <div class="blog-card">
+                    <img src="images/blog/vladimir.jpg" alt="Владимир" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">8 сентября 2025</div>
+                        <h2 class="blog-title">Золотое кольцо: маршрут из Москвы во Владимир</h2>
+                        <p class="blog-excerpt">Обзор дорог, где остановиться и что привезти домой. Исторические достопримечательности.</p>
+                        <a href="#" class="read-more-btn">Читать далее</a>
+                    </div>
+                </div>
+
+                <!-- Статья 3 -->
+                <div class="blog-card">
+                    <img src="images/blog/yaroslavl.jpg" alt="Ярославль" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-date">1 сентября 2025</div>
+                        <h2 class="blog-title">Ярославль: столица медведя и старинных храмов</h2>
+                        <p class="blog-excerpt">Как добраться, где припарковаться, лучшие видовые точки и семейные рестораны.</p>
+                        <a href="#" class="read-more-btn">Читать далее</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DriveBit</h3>
+                    <p>Сервис P2P аренды автомобилей. Дешевле, чем в прокате.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="blog.html">Блог</a></li>
+                        <li><a href="#for-owners">Для владельцев</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3><a href="contacts.html" style="color: white; text-decoration: none;">Контакты</a></h3>
+                    <ul>
+                        <li><a href="mailto:info@drivebit.ru">info@drivebit.ru</a></li>
+                        <li><a href="tel:+78001234567">8 (800) 123-45-67</a></li>
+                        <li><a href="contacts.html#support">Техническая поддержка</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Правовая информация</h3>
+                    <ul>
+                        <li><a href="terms.html">Условия использования</a></li>
+                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                        <li><a href="cookies.html">Политика cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 DriveBit. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

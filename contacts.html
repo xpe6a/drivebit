@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты — DriveBit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8fafc;
+            font-size: 16px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Шапка */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2563eb;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+        nav ul li a:hover {
+            color: #2563eb;
+            background-color: #f8fafc;
+        }
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .auth-buttons a {
+            padding: 10px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        .auth-buttons .login {
+            color: #2563eb;
+            border: 1.5px solid #2563eb;
+        }
+        .auth-buttons .login:hover {
+            background-color: #2563eb;
+            color: white;
+        }
+        .auth-buttons .register {
+            background-color: #f59e0b;
+            color: white;
+            border: 1.5px solid #f59e0b;
+        }
+        .auth-buttons .register:hover {
+            background-color: #e6900b;
+        }
+        /* Основной контент */
+        .contacts-page {
+            padding: 80px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+        .section-title p {
+            color: #6b7280;
+            font-size: 1.1rem;
+        }
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 80px;
+        }
+        .contact-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: white;
+            font-size: 28px;
+        }
+        .card-title {
+            font-size: 1.4rem;
+            color: #1f2937;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .card-info {
+            color: #6b7280;
+            font-size: 15px;
+            margin-bottom: 8px;
+        }
+        .card-link {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .card-link:hover {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+        .support-form {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #374151;
+            font-weight: 500;
+            font-size: 15px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 15px;
+            resize: vertical;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 20px;
+            gap: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <img src="images/logos/logo.png" alt="DriveBit">
+                <span>DriveBit</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="catalog.html">Каталог</a></li>
+                    <li><a href="blog.html">Блог</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="login">Войти</a>
+                <a href="register.html" class="register">Регистрация</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="contacts-page">
+        <div class="container">
+            <div class="section-title">
+                <h2>Свяжитесь с нами</h2>
+                <p>Мы всегда на связи и готовы помочь вам с любыми вопросами</p>
+            </div>
+
+            <!-- Контактные данные -->
+            <div class="contacts-grid">
+                <div class="contact-card">
+                    <div class="card-icon">📞</div>
+                    <h3 class="card-title">Телефон поддержки</h3>
+                    <p class="card-info">Пн–Вс с 8:00 до 22:00</p>
+                    <a href="tel:+78001234567" class="card-link">8 (800) 123-45-67</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="card-icon">✉️</div>
+                    <h3 class="card-title">Email</h3>
+                    <p class="card-info">Ответим в течение 24 часов</p>
+                    <a href="mailto:info@drivebit.ru" class="card-link">info@drivebit.ru</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="card-icon">📍</div>
+                    <h3 class="card-title">Офис</h3>
+                    <p class="card-info">г. Москва, ул. Примерная, д. 1</p>
+                    <a href="#" class="card-link">Показать на карте</a>
+                </div>
+            </div>
+
+            <!-- Форма обратной связи -->
+            <h2 class="section-title">Напишите нам</h2>
+            <form class="support-form" method="POST" action="#">
+                <div class="form-group">
+                    <label for="name">Ваше имя *</label>
+                    <input type="text" id="name" name="name" placeholder="Иван Иванов" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Тема обращения *</label>
+                    <input type="text" id="subject" name="subject" placeholder="Вопрос по бронированию" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Сообщение *</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Напишите ваш вопрос..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Отправить сообщение</button>
+            </form>
+
+            <a href="index.html" class="back-link">← На главную</a>
+        </div>
+    </main>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>DriveBit</h3>
+                    <p>Сервис P2P аренды автомобилей. Дешевле, чем в прокате.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="catalog.html">Каталог</a></li>
+                        <li><a href="blog.html">Блог</a></li>
+                        <li><a href="#for-owners">Для владельцев</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><a href="mailto:info@drivebit.ru">info@drivebit.ru</a></li>
+                        <li><a href="tel:+78001234567">8 (800) 123-45-67</a></li>
+                        <li><a href="#">Написать в поддержку</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Правовая информация</h3>
+                    <ul>
+                        <li><a href="terms.html">Условия использования</a></li>
+                        <li><a href="privacy.html">Политика конфиденциальности</a></li>
+                        <li><a href="cookies.html">Политика cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 DriveBit. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
